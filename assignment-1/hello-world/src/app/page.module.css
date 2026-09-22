@@ -45,6 +45,7 @@
 .status {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 40px;
   margin-top: 36px;
   border: 1px solid #171717;
@@ -54,6 +55,14 @@
   color: #ffffff;
   font-size: 14px;
   font-weight: 700;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.status:hover {
+  background: #245d63;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 640px) {

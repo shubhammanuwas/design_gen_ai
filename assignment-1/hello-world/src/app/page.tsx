@@ -7,9 +7,12 @@ export default function Home() {
         <p className={styles.kicker}>Fall 2026 Design for Gen AI</p>
         <h1 id="hello-world-title">Hello World</h1>
         <p className={styles.copy}>
-          Assignment 1 is live: a tiny Next.js app ready for Vercel.
+          Assignment 2 adds a Supabase-powered list page to the original
+          Hello World app.
         </p>
-        <div className={styles.status}>Ready to deploy</div>
+        <a className={styles.status} href="/users">
+          View users list
+        </a>
       </section>
     </main>
   );

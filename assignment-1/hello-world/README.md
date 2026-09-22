@@ -1,8 +1,23 @@
-# Hello World
+# Design Gen AI Assignments
 
-Assignment 1 for Fall 2026 Design for Gen AI.
+Assignments for Fall 2026 Design for Gen AI.
 
-This is a simple [Next.js](https://nextjs.org) app designed to deploy on Vercel.
+This is a [Next.js](https://nextjs.org) app designed to deploy on Vercel.
+
+## Assignment 2
+
+The `/users` page reads rows from a Supabase table named `users` and displays
+the `id` and `timestamp` columns in a table.
+
+Add these environment variables locally and in Vercel:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-project-url
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-supabase-publishable-key
+```
+
+The app also supports `NEXT_PUBLIC_SUPABASE_ANON_KEY` for projects using the
+older anon key name.
 
 ## Getting Started
 
