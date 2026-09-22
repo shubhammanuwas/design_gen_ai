@@ -1,0 +1,71 @@
+.page {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background:
+    linear-gradient(135deg, rgba(44, 123, 229, 0.12), transparent 38%),
+    linear-gradient(315deg, rgba(255, 112, 88, 0.14), transparent 40%),
+    #f7f7f4;
+  color: #141414;
+}
+
+.hero {
+  width: min(100%, 720px);
+  border: 1px solid #deded7;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  padding: 56px;
+  box-shadow: 0 24px 70px rgba(33, 37, 41, 0.12);
+}
+
+.kicker {
+  margin-bottom: 18px;
+  color: #245d63;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(48px, 9vw, 92px);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.copy {
+  max-width: 520px;
+  margin-top: 24px;
+  color: #4d4d47;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  margin-top: 36px;
+  border: 1px solid #171717;
+  border-radius: 8px;
+  padding: 0 16px;
+  background: #171717;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 18px;
+  }
+
+  .hero {
+    padding: 36px 24px;
+  }
+
+  .copy {
+    font-size: 18px;
+  }
+}
