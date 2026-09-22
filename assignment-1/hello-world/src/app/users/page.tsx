@@ -21,8 +21,8 @@ async function getUsers() {
 
   const { data, error } = await supabase
     .from("users")
-    .select("id, timestamp")
-    .order("timestamp", { ascending: false });
+    .select("id, created_at")
+    .order("created_at", { ascending: false });
 
   return {
     data: (data ?? []) as UserRow[],
@@ -73,7 +73,7 @@ export default async function UsersPage() {
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Timestamp</th>
+                <th scope="col">Created At</th>
               </tr>
             </thead>
             <tbody>
@@ -81,8 +81,8 @@ export default async function UsersPage() {
                 <tr key={user.id}>
                   <td>{user.id}</td>
                   <td>
-                    <time dateTime={user.timestamp}>
-                      {formatTimestamp(user.timestamp)}
+                    <time dateTime={user.created_at}>
+                      {formatTimestamp(user.created_at)}
                     </time>
                   </td>
                 </tr>

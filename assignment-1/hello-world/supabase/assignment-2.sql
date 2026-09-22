@@ -1,6 +1,6 @@
 create table if not exists public.users (
   id bigint generated always as identity primary key,
-  "timestamp" timestamptz not null default now()
+  created_at timestamptz not null default now()
 );
 
 alter table public.users enable row level security;

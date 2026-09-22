@@ -7,7 +7,7 @@ This is a [Next.js](https://nextjs.org) app designed to deploy on Vercel.
 ## Assignment 2
 
 The `/users` page reads rows from a Supabase table named `users` and displays
-the `id` and `timestamp` columns in a table.
+the `id` and `created_at` columns in a table.
 
 Add these environment variables locally and in Vercel:
 

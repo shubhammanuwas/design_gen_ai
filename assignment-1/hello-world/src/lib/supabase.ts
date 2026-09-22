@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 
 export type UserRow = {
   id: number | string;
-  timestamp: string;
+  created_at: string;
 };
 
 type Database = {
