@@ -15,7 +15,7 @@ async function getUsers() {
     return {
       data: [] as UserRow[],
       error:
-        "Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY to load rows.",
+        "Add SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY to load rows.",
     };
   }
 

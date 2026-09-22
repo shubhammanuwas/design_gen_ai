@@ -12,12 +12,14 @@ the `id` and `timestamp` columns in a table.
 Add these environment variables locally and in Vercel:
 
 ```bash
-NEXT_PUBLIC_SUPABASE_URL=your-supabase-project-url
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-supabase-publishable-key
+SUPABASE_URL=your-supabase-project-url
+SUPABASE_PUBLISHABLE_KEY=your-supabase-publishable-key
 ```
 
-The app also supports `NEXT_PUBLIC_SUPABASE_ANON_KEY` for projects using the
-older anon key name.
+The `/users` page is server-rendered, so these variables do not need the
+`NEXT_PUBLIC_` prefix. The app still supports `NEXT_PUBLIC_SUPABASE_URL`,
+`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, and `NEXT_PUBLIC_SUPABASE_ANON_KEY` for
+local fallback compatibility.
 
 ## Getting Started
 
