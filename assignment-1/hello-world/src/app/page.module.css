@@ -60,6 +60,10 @@
     transform 160ms ease;
 }
 
+.status + .status {
+  margin-left: 10px;
+}
+
 .status:hover {
   background: #245d63;
   transform: translateY(-1px);
@@ -76,5 +80,9 @@
 
   .copy {
     font-size: 18px;
+  }
+
+  .status + .status {
+    margin-left: 0;
   }
 }
