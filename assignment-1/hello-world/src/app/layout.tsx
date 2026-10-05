@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Design Gen AI Assignments",
-  description: "A Next.js app connected to Supabase for course assignments.",
+  title: "Fieldnotes / NYC",
+  description: "A daily NYC photo caption exchange for the Columbia community.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
