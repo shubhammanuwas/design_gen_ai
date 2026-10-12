@@ -40,7 +40,7 @@ export async function POST(request: Request) {
       messages: [
         {
           role: "system",
-          content: "Write exactly three short, distinct, witty but kind social captions for the user's NYC photo and prompt. Return a JSON object with a captions array of three strings. Do not claim facts that are not visible in the image.",
+          content: "Write exactly three short, distinct, witty but kind social captions for the user's photo and prompt. Every caption must make a clear, natural connection to Columbia University, its students, campus, buildings, or community. Base the connection on visible details or the user's prompt. If the image has no identifiable Columbia detail, connect it to student life or campus culture without claiming the photo was taken at Columbia or inventing people, places, events, or visual facts. Return a JSON object with a captions array of three strings. Do not claim facts that are not visible in the image or explicitly given in the prompt.",
         },
         {
           role: "user",

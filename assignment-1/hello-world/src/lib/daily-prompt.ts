@@ -1,11 +1,11 @@
 const dailyPrompts = [
-  "Show us the New York you didn’t expect.",
-  "A tiny moment that made your day here.",
-  "What does your favorite block feel like?",
-  "The best thing you found on the way home.",
-  "A little Midwest meets Manhattan energy.",
-  "Your weekend, in one city snapshot.",
-  "The New York detail most people walk past.",
+  "Show us a Columbia corner you didn’t expect to love.",
+  "A tiny campus moment that made your day.",
+  "What does your favorite Columbia building feel like?",
+  "The best thing you found on your way across campus.",
+  "A little Columbia tradition, old or new.",
+  "Your Columbia weekend, in one snapshot.",
+  "The campus detail most people walk past.",
 ];
 
 export function getDailyPrompt() {

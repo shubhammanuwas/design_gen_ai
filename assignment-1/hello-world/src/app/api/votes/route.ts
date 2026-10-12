@@ -22,6 +22,26 @@ export async function POST(request: Request) {
     return Response.json({ error: "Choose an upvote or downvote for a caption." }, { status: 400 });
   }
 
+  const { data: existingVote, error: lookupError } = await supabase
+    .from("caption_votes")
+    .select("value")
+    .eq("generation_id", generationId)
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (lookupError) return Response.json({ error: "Your vote could not be loaded." }, { status: 400 });
+
+  if (existingVote?.value === value) {
+    const { error } = await supabase
+      .from("caption_votes")
+      .delete()
+      .eq("generation_id", generationId)
+      .eq("user_id", user.id);
+
+    if (error) return Response.json({ error: "Your vote could not be removed." }, { status: 400 });
+    return Response.json({ success: true, my_vote: null });
+  }
+
   const { error } = await supabase
     .from("caption_votes")
     .upsert(
@@ -30,5 +50,5 @@ export async function POST(request: Request) {
     );
 
   if (error) return Response.json({ error: "Your vote could not be saved." }, { status: 400 });
-  return Response.json({ success: true });
+  return Response.json({ success: true, my_vote: value });
 }

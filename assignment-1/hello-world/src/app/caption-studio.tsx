@@ -83,11 +83,12 @@ export function CaptionStudio({ loggedIn, dailyPrompt, items: initialItems, feed
       return;
     }
 
+    const nextVote = result.my_vote === 1 || result.my_vote === -1 ? result.my_vote : null;
     setItems((current) => current.map((entry) => {
       if (entry.id !== item.id) return entry;
-      const upvotes = entry.upvotes - Number(entry.my_vote === 1) + Number(value === 1);
-      const downvotes = entry.downvotes - Number(entry.my_vote === -1) + Number(value === -1);
-      return { ...entry, upvotes, downvotes, my_vote: value };
+      const upvotes = entry.upvotes - Number(entry.my_vote === 1) + Number(nextVote === 1);
+      const downvotes = entry.downvotes - Number(entry.my_vote === -1) + Number(nextVote === -1);
+      return { ...entry, upvotes, downvotes, my_vote: nextVote };
     }));
     setPendingVote(null);
   }

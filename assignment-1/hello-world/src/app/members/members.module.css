@@ -5,13 +5,20 @@
 .profileLink, .signOut { color: #435a52; font: inherit; font-size: 14px; font-weight: 700; }
 .signOut { border: 0; background: none; cursor: pointer; }
 .profileLink:hover, .signOut:hover { color: #be5b3b; }
+.studioNav { min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid #d7ddd5; padding: 0 clamp(20px, 6vw, 76px); color: #42635a; font-size: 12px; font-weight: 800; }
+.studioNav > div { display: flex; align-items: center; gap: 28px; }
+.studioNav a { padding: 10px 0; }
+.studioNav a:hover { color: #be5b3b; }
 .content { width: min(100% - 48px, 850px); margin: 0 auto; padding: clamp(76px, 14vh, 140px) 0 80px; animation: enter 380ms ease-out both; }
 .kicker { color: #bf5f3e; font-size: 12px; font-weight: 800; text-transform: uppercase; }
 .content h1 { margin-top: 18px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(48px, 7vw, 76px); font-weight: 500; line-height: 1.04; }
 .copy { max-width: 530px; margin-top: 24px; color: #596962; font-size: 17px; line-height: 1.7; }
 .copy strong { color: #28473f; overflow-wrap: anywhere; }
+.captionsButton { min-height: 46px; display: inline-flex; align-items: center; gap: 22px; margin-top: 30px; padding: 0 18px; background: #205b4c; color: #fff; font-size: 13px; font-weight: 800; }
+.captionsButton:hover { background: #16483d; }
+.captionsButton span { font-size: 16px; }
 .rule { display: flex; align-items: baseline; gap: 18px; margin-top: 74px; border-top: 1px solid #bdcbc2; padding-top: 18px; color: #42635a; }
 .rule span { font-size: 12px; font-weight: 800; }
 .rule p { color: #53645c; font-size: 14px; }
 @keyframes enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-@media (max-width: 520px) { .topbar { align-items: flex-start; padding-top: 20px; padding-bottom: 18px; } .account { gap: 14px; } .content { width: calc(100% - 36px); } }
+@media (max-width: 520px) { .topbar { align-items: flex-start; padding-top: 20px; padding-bottom: 18px; } .account { gap: 14px; } .studioNav { align-items: flex-start; flex-direction: column; gap: 4px; padding-top: 13px; padding-bottom: 10px; } .studioNav > div { width: 100%; justify-content: space-between; gap: 16px; } .content { width: calc(100% - 36px); } }

@@ -31,7 +31,7 @@ grant select on public.profiles to authenticated;
 grant update on public.profiles to authenticated;
 grant select on public.generations to anon, authenticated;
 grant insert on public.generations to authenticated;
-grant select, insert, update on public.caption_votes to authenticated;
+grant select, insert, update, delete on public.caption_votes to authenticated;
 
 drop policy if exists "Allow public read access to users" on public.users;
 drop policy if exists "Anyone can read users" on public.users;
@@ -75,6 +75,11 @@ create policy "Users can change their own votes"
 on public.caption_votes for update to authenticated
 using ((select auth.uid()) = user_id)
 with check ((select auth.uid()) = user_id);
+
+drop policy if exists "Users can remove their own votes" on public.caption_votes;
+create policy "Users can remove their own votes"
+on public.caption_votes for delete to authenticated
+using ((select auth.uid()) = user_id);
 
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 values ('generation-photos', 'generation-photos', true, 5242880, array['image/jpeg', 'image/png', 'image/webp'])
