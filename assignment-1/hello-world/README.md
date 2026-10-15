@@ -7,8 +7,9 @@ This is a [Next.js](https://nextjs.org) app designed to deploy on Vercel.
 ## Assignment 3: Auth and Profiles
 
 This update adds Google OAuth sign-in, user profiles, avatar uploads, and the
-protected `/members` route. Profile pictures live in Supabase Storage; only the
-image URL is saved in the `profiles` table.
+protected `/members` route. After signing in, users go directly to the captions
+page at `/`. Profile pictures live in Supabase Storage; only the image URL is
+saved in the `profiles` table.
 
 ### Supabase setup
 
@@ -45,7 +46,8 @@ window. After deploying, submit the URL for the specific deployment/commit.
 ### Routes
 
 - `/login` starts Google sign-in.
-- `/auth/callback` completes the session exchange and checks required names.
+- `/auth/callback` completes the session exchange and sends users to the captions
+  page.
 - `/profile` lets the signed-in user add or edit names and upload an avatar.
 - `/members` is the protected route; both the request proxy and server page
   validate the Supabase session.

@@ -22,5 +22,5 @@ export async function saveProfile(formData: FormData) {
   if (error) redirect("/profile?error=save");
   revalidatePath("/profile");
   revalidatePath("/members");
-  redirect("/members");
+  redirect("/");
 }

@@ -9,15 +9,7 @@ export async function GET(request: NextRequest) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
       const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("first_name, last_name")
-          .eq("id", user.id)
-          .maybeSingle();
-        const complete = Boolean(profile?.first_name?.trim() && profile?.last_name?.trim());
-        return NextResponse.redirect(new URL(complete ? "/members" : "/profile?complete=1", request.url));
-      }
+      if (user) return NextResponse.redirect(new URL("/", request.url));
     }
   }
 

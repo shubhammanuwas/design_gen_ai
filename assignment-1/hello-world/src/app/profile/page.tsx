@@ -6,7 +6,7 @@ import { saveProfile } from "./actions";
 import styles from "./profile.module.css";
 
 type ProfilePageProps = {
-  searchParams: Promise<{ complete?: string; error?: string }>;
+  searchParams: Promise<{ error?: string }>;
 };
 
 export default async function ProfilePage({ searchParams }: ProfilePageProps) {
@@ -28,14 +28,13 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
   return (
     <main className={styles.page}>
       <div className={styles.shell}>
-        <Link className={styles.back} href="/members">Back to members</Link>
+        <Link className={styles.back} href="/">Back to captions</Link>
         <header className={styles.header}>
           <p className={styles.kicker}>Your account</p>
           <h1>Profile</h1>
-          <p>Keep your details current. Your name is required to finish setting up your account.</p>
+          <p>Keep your account details current.</p>
         </header>
 
-        {params.complete ? <p className={styles.prompt} role="status">Welcome. Add your first and last name to finish your profile.</p> : null}
         {params.error ? <p className={styles.error} role="alert">{params.error === "names" ? "Enter both your first and last name." : "We could not save your profile. Please try again."}</p> : null}
         {error ? <p className={styles.error} role="alert">Profile could not be loaded: {error.message}</p> : null}
 

@@ -2,7 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { signOut } from "@/app/actions/auth";
 import type { GenerationRow } from "@/lib/supabase/database";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 import styles from "./page.module.css";
@@ -27,7 +28,18 @@ export function CaptionStudio({ loggedIn, dailyPrompt, items: initialItems, feed
   const [items, setItems] = useState(initialItems);
   const [pending, setPending] = useState(false);
   const [pendingVote, setPendingVote] = useState<string | null>(null);
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    if (!photoPreview) return;
+    return () => URL.revokeObjectURL(photoPreview);
+  }, [photoPreview]);
+
+  function selectPhoto(event: ChangeEvent<HTMLInputElement>) {
+    const photo = event.currentTarget.files?.[0];
+    setPhotoPreview(photo ? URL.createObjectURL(photo) : null);
+  }
 
   async function createCaptions(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -57,6 +69,7 @@ export function CaptionStudio({ loggedIn, dailyPrompt, items: initialItems, feed
     }));
     setItems((current) => [...createdItems, ...current]);
     formRef.current?.reset();
+    setPhotoPreview(null);
     setMessage("Three captions added to the exchange.");
     setPending(false);
     router.refresh();
@@ -98,7 +111,14 @@ export function CaptionStudio({ loggedIn, dailyPrompt, items: initialItems, feed
       <header className={styles.topbar}>
         <Link className={styles.wordmark} href="/">Fieldnotes <span>/ NYC</span></Link>
         <nav aria-label="Account navigation">
-          {loggedIn ? <><a href="/profile">Profile</a><a href="/members">Members</a></> : <a className={styles.signIn} href="/login">Sign in</a>}
+          {loggedIn ? (
+            <>
+              <a href="/profile">Edit profile</a>
+              <form action={signOut}>
+                <button className={styles.signOut} type="submit">Sign out</button>
+              </form>
+            </>
+          ) : <a className={styles.signIn} href="/login">Sign in</a>}
         </nav>
       </header>
 
@@ -115,14 +135,24 @@ export function CaptionStudio({ loggedIn, dailyPrompt, items: initialItems, feed
         </div>
         {loggedIn ? (
           <form ref={formRef} className={styles.form} onSubmit={createCaptions}>
-            <label className={styles.photoInput}>
-              <span className={styles.photoIcon} aria-hidden="true">+</span>
-              <span><strong>Add a city photo</strong><small>JPEG, PNG, or WebP · up to 5 MB</small></span>
-              <input name="photo" type="file" accept="image/jpeg,image/png,image/webp" required />
+            <label className={`${styles.photoInput} ${photoPreview ? styles.photoSelected : ""}`}>
+              {photoPreview ? (
+                <>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img className={styles.photoPreview} src={photoPreview} alt="Selected photo preview" />
+                  <span><strong>Change city photo</strong><small>JPEG, PNG, or WebP · up to 5 MB</small></span>
+                </>
+              ) : (
+                <>
+                  <span className={styles.photoIcon} aria-hidden="true">+</span>
+                  <span><strong>Add a city photo</strong><small>JPEG, PNG, or WebP · up to 5 MB</small></span>
+                </>
+              )}
+              <input name="photo" type="file" accept="image/jpeg,image/png,image/webp" onChange={selectPhoto} required />
             </label>
             <label className={styles.promptLabel}>
               Give the AI a little context
-              <textarea name="prompt" maxLength={500} defaultValue={dailyPrompt} required rows={2} />
+              <textarea name="prompt" maxLength={500} placeholder={dailyPrompt} required rows={2} />
             </label>
             <div className={styles.submitRow}>
               <span>Three captions, one photo. Your prompt is saved with them.</span>

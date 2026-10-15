@@ -11,7 +11,9 @@
 .wordmark { font-family: Georgia, "Times New Roman", serif; font-size: 25px; font-weight: 700; }
 .wordmark span { color: #658276; font-family: var(--font-geist-sans), sans-serif; font-size: 12px; font-weight: 700; }
 .topbar nav { display: flex; align-items: center; gap: 25px; color: #46665a; font-size: 13px; font-weight: 700; }
-.topbar nav a:hover { color: #bb513b; }
+.topbar nav a:hover, .signOut:hover { color: #bb513b; }
+.topbar nav form { margin: 0; }
+.signOut { border: 0; padding: 8px 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
 .signIn { border-bottom: 1px solid currentColor; padding: 8px 0; }
 
 .intro { padding: 74px 0 60px; }
@@ -27,6 +29,8 @@
 .form { display: grid; grid-template-columns: minmax(220px, 0.85fr) minmax(260px, 1.15fr); gap: 16px 24px; }
 .photoInput { position: relative; min-height: 92px; display: flex; align-items: center; gap: 14px; border: 1px dashed #91aa9b; padding: 16px; background: rgba(255, 255, 255, 0.52); cursor: pointer; }
 .photoInput:hover { border-color: #347461; background: #fff; }
+.photoSelected { flex-direction: column; align-items: flex-start; }
+.photoPreview { width: 100%; max-height: 220px; object-fit: contain; background: #e5ece6; }
 .photoIcon { width: 36px; height: 36px; display: grid; place-items: center; background: #d9e9dc; color: #2f705e; font-size: 25px; font-weight: 400; }
 .photoInput strong, .photoInput small { display: block; }
 .photoInput strong { font-size: 13px; }
