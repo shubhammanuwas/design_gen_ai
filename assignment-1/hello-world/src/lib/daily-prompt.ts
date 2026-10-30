@@ -1,11 +1,11 @@
 const dailyPrompts = [
-  "Show us a Columbia corner you didn’t expect to love.",
-  "A tiny campus moment that made your day.",
-  "What does your favorite Columbia building feel like?",
-  "The best thing you found on your way across campus.",
-  "A little Columbia tradition, old or new.",
-  "Your Columbia weekend, in one snapshot.",
-  "The campus detail most people walk past.",
+  "What Columbia campus moment deserves its own sitcom episode?",
+  "Show us a Columbia study break with main-character energy.",
+  "What Columbia detail looks like it knows your deadline is tomorrow?",
+  "Capture a Columbia moment that would make a very tiny campus comedy.",
+  "What on campus is working harder than your group project?",
+  "Show us a Columbia scene that says, “I came for one thing and got distracted.”",
+  "What Columbia campus moment needs a laugh track?",
 ];
 
 export function getDailyPrompt() {

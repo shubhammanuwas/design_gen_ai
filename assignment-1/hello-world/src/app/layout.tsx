@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Fieldnotes / NYC",
-  description: "A daily NYC photo caption exchange for the Columbia community.",
+  title: "The Punchline / Columbia",
+  description: "Columbia University's very unofficial comedy department: photo captions, punchlines, and student votes.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
